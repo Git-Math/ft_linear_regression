@@ -1,13 +1,8 @@
 import sys
 import file
-import precision
 
 learning_rate = 1
 gradient_iter_nb = 100
-
-def usage():
-    print("Usage: " + sys.argv[0] + " [-b]")
-    sys.exit(2)
 
 def scale_km(km, min_km, max_km):
     return (km - min_km) / (max_km - min_km)
@@ -32,15 +27,9 @@ def gradient_descent_step(data, theta0, theta1, learning_rate):
     theta1 -= learning_rate / m * sum1
     return theta0, theta1    
 
-if len(sys.argv) != 1 and (len(sys.argv) != 2 or sys.argv[1] != "-b"):
-    usage()
-bonus = True if len(sys.argv) == 2 else False
 data = file.read_data()
-data = scale_data(data)
+scaled_data = scale_data(data)
 theta0, theta1 = file.read_theta()
 for i in range(gradient_iter_nb):
-    theta0, theta1 = gradient_descent_step(data, theta0, theta1, learning_rate)
+    theta0, theta1 = gradient_descent_step(scaled_data, theta0, theta1, learning_rate)
 file.write_theta(theta0, theta1)
-if bonus:
-    p = precision.r_squared(data, theta0, theta1)
-    print("precision: %.2f%%" % (p * 100))

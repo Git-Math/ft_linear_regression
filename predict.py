@@ -8,17 +8,19 @@ def estimate_price(km, theta0, theta1):
     return theta0 + theta1 * km
 
 def usage():
-    print("Usage: " + sys.argv[0] + " [-b] <km>")
+    print("Usage: " + sys.argv[0] + " [-b]")
     sys.exit(2)
 
-if len(sys.argv) != 2 and (len(sys.argv) != 3 or sys.argv[1] != "-b"):
+if len(sys.argv) != 1 and (len(sys.argv) != 2 or sys.argv[1] != "-b"):
     usage()
-try:
-    km = float(sys.argv[1]) if len(sys.argv) == 2 else float(sys.argv[2])
-except:
-    print("km must be a number")
-    exit(2)
-bonus = True if len(sys.argv) == 3 else False
+bonus = True if len(sys.argv) == 2 else False
+loop = True
+while loop:
+    try:
+        km = float(input("km: "))
+        loop = False
+    except:
+        print("km must be a number")
 theta0, theta1 = file.read_theta()
 data = file.read_data()
 min_km = min(data, key = lambda t: t[0])[0]

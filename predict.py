@@ -27,7 +27,7 @@ min_km = min(data, key = lambda t: t[0])[0]
 max_km = max(data, key = lambda t: t[0])[0]
 km = train.scale_km(km, min_km, max_km)
 price = theta0 + (theta1 * km)
-print (estimate_price(km, theta0, theta1))
+print ("estimated price: %.2f" % estimate_price(km, theta0, theta1))
 if bonus:
     scaled_data = train.scale_data(data)
     p = precision.r_squared(scaled_data, theta0, theta1)

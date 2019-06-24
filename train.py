@@ -1,8 +1,8 @@
 import sys
 import file
 
-learning_rate = 1
-gradient_iter_nb = 100
+learning_rate = 0.1
+gradient_iter_nb = 2000
 
 def scale_km(km, min_km, max_km):
     return (km - min_km) / (max_km - min_km)

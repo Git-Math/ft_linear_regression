@@ -25,11 +25,12 @@ def gradient_descent_step(data, theta0, theta1, learning_rate):
         sum1 += price_diff * km
     theta0 -= learning_rate / m * sum0
     theta1 -= learning_rate / m * sum1
-    return theta0, theta1    
+    return theta0, theta1
 
-data = file.read_data()
-scaled_data = scale_data(data)
-theta0, theta1 = file.read_theta()
-for i in range(gradient_iter_nb):
-    theta0, theta1 = gradient_descent_step(scaled_data, theta0, theta1, learning_rate)
-file.write_theta(theta0, theta1)
+if __name__ == "__main__":
+    data = file.read_data()
+    scaled_data = scale_data(data)
+    theta0, theta1 = file.read_theta()
+    for i in range(gradient_iter_nb):
+        theta0, theta1 = gradient_descent_step(scaled_data, theta0, theta1, learning_rate)
+    file.write_theta(theta0, theta1)

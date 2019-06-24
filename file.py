@@ -14,7 +14,7 @@ def read_theta():
     return theta0, theta1
 
 def write_theta(theta0, theta1):
-    try:   
+    try:
         with open("data/theta.csv", "w") as theta_file:
             theta_file.write("theta0,theta1\n")
             theta_file.write(str(theta0) + "," + str(theta1) + "\n")
@@ -32,8 +32,8 @@ def read_data():
             while data_line:
                 data_list = data_line.split(",")
                 data.append((float(data_list[0]), float(data_list[1])))
-                data_line = data_file.readline() 
-            data_file.close()         
+                data_line = data_file.readline()
+            data_file.close()
     except:
         print("data.csv invalid")
         exit(1)

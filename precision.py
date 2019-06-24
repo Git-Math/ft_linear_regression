@@ -10,7 +10,7 @@ def calc_mean_price(data):
 def r_squared(data, theta0, theta1):
     sum0 = 0
     sum1 = 0
-    mean_price = calc_mean_price(data) 
+    mean_price = calc_mean_price(data)
     for km, price in data:
         predicted_price = theta0 + (theta1 * km)
         sum0 += (price - predicted_price) ** 2
